@@ -11,7 +11,7 @@ AUTHPASS="${AUTHPASS}"
 
 if [[ $EMAIL = '' ]] || [[ $MESSAGE = '' ]] || [[ $TO = '' ]]
 then
-	echo 'usage: docker run -e EMAIL=<email address> -e AUTHPASS=<password> -e MESSAGE=<message> -e TO=<email to> [-e AUTHUSER=[$EMAIL]] [-e MAILHUB=[smtp.gmail.com:587]] [-e USESTARTTLS=[YES]] dockerinpractice/docker-mailer'
+	echo 'usage: docker run -e EMAIL=<email address> -e AUTHPASS=<password> -e MESSAGE=<message> -e TO=<email to> [-e AUTHUSER=[$EMAIL]] [-e MAILHUB=[smtp.gmail.com:587]] [-e USESTARTTLS=[YES]] aliart/docker-mailer'
 	exit 1
 fi
 
@@ -22,4 +22,4 @@ AuthUser=${AUTHUSER}
 AuthPass=${AUTHPASS}
 EOF
 
-echo "$SUBJECT" | mail -s "$MESSAGE" -t "$TO"
+echo "$MESSAGE" | mail -s "$SUBJECT" -t "$TO"
